@@ -1,0 +1,24 @@
+{
+  "name": "webpack-notes",
+  "version": "1.0.0",
+  "description": "webpack notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naihe138/webpack-notes.git"
+  },
+  "keywords": [
+    "webpack",
+    "node",
+    "souce"
+  ],
+  "author": "naice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naihe138/webpack-notes/issues"
+  },
+  "homepage": "https://github.com/naihe138/webpack-notes#readme"
+}
