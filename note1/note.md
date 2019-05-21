@@ -60,3 +60,52 @@ module.exports = {
 ```
 
 上边的代码流程就是，传一个对象进去，这个对象其中的key是文件地址，value是一个function，然后从入口开始执行`__webpack_require__(__webpack_require__.s = "./note1/index.js");`执行这个__webpack_require__之后会检查有没有缓存，如果有就直接返回缓存的的`installedModules[moduleId].exports`，否则穿创建一个模块进行缓存，然后执行key的函数，执行这个函数，如果函数里面还有 `__webpack_require__`，会继续递归执行，然后吧结果一层层返回出来赋值到`module.exports`上面，然后在返回`module.exports`
+
+### webapck-dev-server 服务
+
+安装模块
+
+`npm install webpack-dev-server -D`
+
+然后在命令行运行`npx webpack-dev-server --config webpack.note1.js`，然后就把文件打包到内存里面，这么运行是直接以当前目录作为一个服务。但是我们配置的话，需要指定的打包目录去作为文件服务，这就需要再webpack配置文件中配置如下。
+
+````js
+	// 开发服务器配置
+  devServer: {
+    port: 3000, // 端口号
+    progress: true, // 打包进度
+    contentBase: './note1/dist' // 指定那个运行目录
+  }
+````
+
+然后在package.json里面配置 
+
+````js
+	"scripts": {
+    "note1": "webpack --config webpack.note1.js",
+    "dev-note1": "webpack-dev-server --config webpack.note1.js"
+  }
+````
+
+命令行运行`npm run dev-note1`，就可以起一个以`./note1/dist`目录的服务器了。
+
+## html插件
+
+到目前为止，我们打包出来都是没有html模板的，下面我们用`html-webapck-plugin`的插件，配置一个html模板生产文件。在webpack配置文件中配置一个插件，就可以打包出html文件了。
+
+````js
+
+	// ....
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: './note1/index.html', // 模板
+			filename: 'index.html', // 文件名
+			minify: {
+				removeAttributeQuotes: true, // 去掉html属性双引号
+				collapseWhitespace: true, // 折叠成一行
+			},
+			hash: true // hash戳。缓存等的问题
+		})
+	]
+	// ....
+````
