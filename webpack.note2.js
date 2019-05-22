@@ -1,6 +1,9 @@
 'use strict'
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCss = require('optimize-css-assets-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'development', // 模式，默认两种 production development
   // 开发服务器配置
@@ -14,6 +17,16 @@ module.exports = {
     filename: 'bundle.[hash:8].js',
     path: path.resolve(__dirname, 'note1/dist')
   },
+  optimization: { // 优化项
+    minimizer: [
+      new TerserJSPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCss({})
+    ]
+  },
   module: { // 模块
     rules: [ // 规则
       {
@@ -21,21 +34,18 @@ module.exports = {
         // style-loader 负责把css查到header中
         test: /\.css$/,
         use: [
-          {
-            loader: 'style-loader'
-            // options: {} // 对象形式可以传参数
-          },
-          'css-loader'
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
         ]
       },
       {
         // 处理less 文件
         test: /\.less$/,
         use: [
-          {
-            loader: 'style-loader'
-          },
+          MiniCssExtractPlugin.loader,
           'css-loader', // @import 解析
+          'postcss-loader',
           'less-loader' // less -->css
         ]
       }
@@ -45,11 +55,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './note1/index.html', // 模板
       filename: 'index.html', // 文件名
-      minify: {
-        removeAttributeQuotes: true, // 去掉html属性双引号
-        collapseWhitespace: true, // 折叠成一行
-      },
       hash: true // hash戳。缓存等的问题
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'main.css'
     })
   ]
 }

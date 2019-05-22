@@ -1,0 +1,11 @@
+@import './a.css';
+body {
+  background: red;
+}
+
+body p {
+  width: 100px;
+  height: 100px;
+  background: dodgerblue;
+  transform: rotate(30deg);
+}

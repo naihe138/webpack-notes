@@ -108,3 +108,138 @@ plugins: [
 // ....
 ````
 这么配置就可以生打包出来inde.html文件了。
+
+## 打包css模块
+
+打包css样式，需要css-loader和style-loader，css-loader复制解析我们css文件的代码，style-loader复制解析完代码插入到html模板文件里面，建议loader设计都需要建议只是单一职责。
+
+安装css-loader 和style-loader
+
+`npm install css-loader style-loader -D`
+
+在我们webpack配置代码里面配置。
+
+````js
+// ....
+
+module: { // 模块
+  rules: [ // 规则
+    {
+      // css loader负责解析
+      // style-loader 负责把css查到header中
+      test: /\.css$/,
+      use: [
+        {
+          loader: 'style-loader'
+          // options: {} // 对象形式可以传参数
+        },
+        'css-loader'
+      ]
+    },
+    {
+      // 处理less 文件
+      test: /\.less$/,
+      use: [
+        {
+          loader: 'style-loader'
+        },
+        'css-loader', // @import 解析
+        'less-loader' // less -->css
+      ]
+    }
+  ]
+},
+
+// ....
+
+````
+
+最后打包出来，就把样式插入到页面中了。
+
+### 抽离样式
+
+````js
+// 抽离样式
+npm install mini-css-extract-plugin -D
+ 
+// css添加前缀
+npm install postcss-loader autoprefixer -D
+
+// css压缩优化
+npm install optimize-css-assets-webpack-plugin -D
+
+// 压缩js
+
+npm install uglifyjs-webpack-plugin -D
+````
+
+具体请看下面抽离样式的配置。
+
+````js
+
+'use strict'
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCss = require('optimize-css-assets-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin');
+module.exports = {
+  mode: 'development', // 模式，默认两种 production development
+  // 开发服务器配置
+  devServer: {
+    port: 3000, // 端口号
+    progress: true, // 打包进度
+    contentBase: './note1/dist' // 指定那个运行目录
+  },
+  entry: './note1/index.js', // 入口
+  output: {
+    filename: 'bundle.[hash:8].js',
+    path: path.resolve(__dirname, 'note1/dist')
+  },
+  optimization: { // 优化项
+    minimizer: [
+      new TerserJSPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCss({})
+    ]
+  },
+  module: { // 模块
+    rules: [ // 规则
+      {
+        // css loader负责解析
+        // style-loader 负责把css查到header中
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+      {
+        // 处理less 文件
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader', // @import 解析
+          'postcss-loader',
+          'less-loader' // less -->css
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './note1/index.html', // 模板
+      filename: 'index.html', // 文件名
+      hash: true // hash戳。缓存等的问题
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'main.css'
+    })
+  ]
+}
+
+````
