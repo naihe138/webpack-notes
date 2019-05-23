@@ -1,11 +1,13 @@
 'use strict'
+
+// note1 抽离样式
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCss = require('optimize-css-assets-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
-  mode: 'development', // 模式，默认两种 production development
+  mode: 'production', // 模式，默认两种 production development
   // 开发服务器配置
   devServer: {
     port: 3000, // 端口号
