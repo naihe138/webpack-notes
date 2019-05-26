@@ -173,4 +173,6 @@ module.exports = {
 
 ### webpack自带优化功能
 
-模式切换为，'production'，开启代码树摇，只有 import的才能使用
+- 模式切换为，'production'，开启代码树摇，只有 import的才能使用
+
+- scope hosting
