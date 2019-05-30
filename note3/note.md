@@ -62,3 +62,47 @@ copyWbpackPlugin // 复制文件插件
 
 bannerPlugin // 内置  版权声明
 
+
+### resolve基本参数配置
+
+````js
+
+解析模块和文件的一些配置
+
+resolve: {
+  modules: [path.resolve('node_module')], //当前目录解析
+  // mainFields: ['style', 'main'], // 入口文件的名字，
+  alias: { // 别名
+    'bcss': 'bootstrap/dis/style.css'
+  },
+  extensions: ['js', 'css', 'json'] // 省略扩展名
+},
+
+````
+
+### 自定义环境变量
+
+根据变量来区分环境
+
+````js
+let url = ''
+
+if (DEV === 'dev') {
+  url = 'http:localhost:3000'
+} else {
+  url = 'http://www.naice.com'
+}
+console.log(url) // 'http:localhost:3000'
+````
+
+然后在webpack中运用自定义插件，来配置
+
+````js
+
+new webpack.DefinePlugin({
+  DEV: JSON.stringify('dev'), // string dev
+  FLAG: 'true', // true
+  EXPORESSION: '1+1' // 表达式
+})
+
+````

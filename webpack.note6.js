@@ -1,44 +1,50 @@
 'use strict'
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const Happypack = require('happypack')
 module.exports = {
   mode: 'development',
-  entry: {
-    home: './note4/index.js'
-  },
+  entry: './note4/index.js',
   output: {
-    filename: '[name].[hash:8].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  module: {
-    rules: []
-  },
   devServer: {
-    port: 8081, // 端口号
-    progress: true, // 打包进度
-    contentBase: 'dist', // 指定那个运行目录
-    proxy: {
-      '/test': 'http://localhost:3000' // 如果是test开头一律转发到http://localhost:3000
-    }
+    port: 3000,
+    contentBase: './dist'
   },
-  // devServer: {
-  //   port: 8081, // 端口号
-  //   progress: true, // 打包进度
-  //   contentBase: 'dist', // 指定那个运行目录
-  //   proxy: {
-  //     '/api': {
-  //       target: 'http://localhost:3000',
-  //       pathRewrite: {
-  //         '/api': ''
-  //       }
-  //     }
-  //   }
-  // }, 
+  module: {
+    // 不去解析jquery的的依赖关系，因为我们知道jQuery不会有其他依赖
+    noParse: /jquery/,
+    rules: [
+      {
+        test: /\.js/,
+        exclude: /node_modules/, //排除跟包含
+        include: path.resolve(__dirname, 'note4'),
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ]
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './note4/index.html',
-      filename: 'index.html',
-      chunks: ['home']
+      filename: 'index.html'
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, 'dist', 'manifest.json')
     })
   ]
-}
+} 
