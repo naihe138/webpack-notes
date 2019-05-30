@@ -7,7 +7,9 @@
     "note1": "webpack --config webpack.note1.js",
     "dev-note1": "webpack-dev-server --config webpack.note1.js",
     "note2": "webpack --config webpack.note2.js",
-    "dev-note2": "webpack-dev-server --config webpack.note2.js"
+    "dev-note2": "webpack-dev-server --config webpack.note2.js",
+    "note4": "webpack --config webpack.note6.js",
+    "dev-note4": "webpack-dev-server --config webpack.note6.js"
   },
   "repository": {
     "type": "git",
