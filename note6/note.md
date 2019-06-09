@@ -43,13 +43,24 @@ const {
 } = require("tapable");
 
 // 例子
-
 class Car {
   constructor () {
     this.hooks = {
       accelerate: new SyncHook(['newSpeed'])
     }
+  },
+  tap () {
+    this.hooks.accelerate.tap('car1', speed => {
+      console.log(speed)
+    })
+  }
+  start () {
+    this.hooks.accelerate.call('400')
   }
 }
+
+let car = new Car()
+car.tap()
+car.start()
 
 ````
