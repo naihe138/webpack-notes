@@ -10,10 +10,10 @@ webpack通常被大家成为一个打包机，从入口开始做各种分析目�
 
 ## 本笔记会记下学习以下的要点
 
-- webpack常见配置
-- webpack高级配置
-- webpack优化方式
+- [webpack常见配置](./note3/note.md)
+- [webpack高级配置](./note4/note.md)
+- [webpack优化方式](./note5/note.md)
 - ast抽象语法树的学习
-- 介绍webpack中的tapatale
-- 编写webpack常见的loader
+- [介绍webpack中的tapatale](./note6/note.md)
+- [编写webpack常见的loader](./note7/note.md)
 - 编写webpack常见的plugin
