@@ -81,53 +81,41 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./note4/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./note7/index.1.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/react-dom/index.js":
-/*!*********************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference _dll_react ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = (__webpack_require__(/*! dll-reference _dll_react */ \"dll-reference _dll_react\"))(\"./node_modules/react-dom/index.js\");\n\n//# sourceURL=webpack:///delegated_./node_modules/react-dom/index.js_from_dll-reference__dll_react?");
-
-/***/ }),
-
-/***/ "./node_modules/react/index.js":
-/*!*****************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference _dll_react ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = (__webpack_require__(/*! dll-reference _dll_react */ \"dll-reference _dll_react\"))(\"./node_modules/react/index.js\");\n\n//# sourceURL=webpack:///delegated_./node_modules/react/index.js_from_dll-reference__dll_react?");
-
-/***/ }),
-
-/***/ "./note4/index.js":
-/*!************************!*\
-  !*** ./note4/index.js ***!
-  \************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n// import jquery from 'jquery'\n// import moment from 'moment'\n// // 因为webpack忽略了，所以要手动引入中文包\n// // 设置语言\n// import 'moment/locale/zh-cn'\n// moment.locale('zh-cn')\n// let r = moment().endOf('day').fromNow()\n\n\nObject(react_dom__WEBPACK_IMPORTED_MODULE_1__[\"render\"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"jsx\"), document.querySelector('#root'));\n\n//# sourceURL=webpack:///./note4/index.js?");
-
-/***/ }),
-
-/***/ "dll-reference _dll_react":
-/*!*****************************!*\
-  !*** external "_dll_react" ***!
-  \*****************************/
+/***/ "./note7/css-loader.js!./note7/less-loader.js!./note7/test.less":
+/*!**********************************************************************!*\
+  !*** ./note7/css-loader.js!./note7/less-loader.js!./note7/test.less ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = _dll_react;\n\n//# sourceURL=webpack:///external_%22_dll_react%22?");
+eval("let lists = [];\r\nlists.push(\"module.exports = \\\".box {\\\\n  color: #fe33ac;\\\\n  border-color: #fdcdea;\\\\n}\\\\n.box div {\\\\n  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);\\\\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);\\\\n}\\\\n\\\"\")\r\nmodule.exports = lists.join('')\n\n//# sourceURL=webpack:///./note7/test.less?./note7/css-loader.js!./note7/less-loader.js");
+
+/***/ }),
+
+/***/ "./note7/index.1.js":
+/*!**************************!*\
+  !*** ./note7/index.1.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\n__webpack_require__(/*! ./test.less */ \"./note7/test.less\")\n\n//# sourceURL=webpack:///./note7/index.1.js?");
+
+/***/ }),
+
+/***/ "./note7/test.less":
+/*!*************************!*\
+  !*** ./note7/test.less ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\n  var style = document.createElement(\"style\");\n  style.innerHTML = __webpack_require__(/*! !./css-loader.js!./less-loader.js!./test.less */ \"./note7/css-loader.js!./note7/less-loader.js!./note7/test.less\");\n  document.head.appendChild(style);\n \n\n//# sourceURL=webpack:///./note7/test.less?");
 
 /***/ })
 

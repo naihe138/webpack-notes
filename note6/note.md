@@ -42,25 +42,6 @@ const {
   AsyncSeriesWaterfallHook
 } = require("tapable");
 
-// 例子
-class Car {
-  constructor () {
-    this.hooks = {
-      accelerate: new SyncHook(['newSpeed'])
-    }
-  },
-  tap () {
-    this.hooks.accelerate.tap('car1', speed => {
-      console.log(speed)
-    })
-  }
-  start () {
-    this.hooks.accelerate.call('400')
-  }
-}
-
-let car = new Car()
-car.tap()
-car.start()
+// 所有实现的代码以及原理 都在都在本目录文件夹下面
 
 ````
