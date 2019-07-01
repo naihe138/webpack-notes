@@ -81,41 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./note7/index.1.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./note8/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./note7/css-loader.js!./note7/less-loader.js!./note7/test.less":
-/*!**********************************************************************!*\
-  !*** ./note7/css-loader.js!./note7/less-loader.js!./note7/test.less ***!
-  \**********************************************************************/
+/***/ "./note8/index.js":
+/*!************************!*\
+  !*** ./note8/index.js ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("let lists = [];\r\nlists.push(\"module.exports = \\\".box {\\\\n  color: #fe33ac;\\\\n  border-color: #fdcdea;\\\\n}\\\\n.box div {\\\\n  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);\\\\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);\\\\n}\\\\n\\\"\")\r\nmodule.exports = lists.join('')\n\n//# sourceURL=webpack:///./note7/test.less?./note7/css-loader.js!./note7/less-loader.js");
-
-/***/ }),
-
-/***/ "./note7/index.1.js":
-/*!**************************!*\
-  !*** ./note7/index.1.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("\n__webpack_require__(/*! ./test.less */ \"./note7/test.less\")\n\n//# sourceURL=webpack:///./note7/index.1.js?");
-
-/***/ }),
-
-/***/ "./note7/test.less":
-/*!*************************!*\
-  !*** ./note7/test.less ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("\n  var style = document.createElement(\"style\");\n  style.innerHTML = __webpack_require__(/*! !./css-loader.js!./less-loader.js!./test.less */ \"./note7/css-loader.js!./note7/less-loader.js!./note7/test.less\");\n  document.head.appendChild(style);\n \n\n//# sourceURL=webpack:///./note7/test.less?");
+eval("\nconst name = 'china'\n\nconst hello = () => {\n  console.log(name)\n}\n\n//# sourceURL=webpack:///./note8/index.js?");
 
 /***/ })
 

@@ -16,4 +16,4 @@ webpack通常被大家成为一个打包机，从入口开始做各种分析目�
 - ast抽象语法树的学习
 - [介绍webpack中的tapatale](./note6/note.md)
 - [编写webpack常见的loader](./note7/note.md)
-- 编写webpack常见的plugin
+- [编写webpack的plugin](./note8/note.md)
